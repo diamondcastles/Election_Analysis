@@ -9,6 +9,11 @@
 import csv
 import os
 
+
+#Establish total_votes variable to zero- must be above the file we are opening bc of way Python reads code and we always want this to be starting out at zero when file is
+#open
+total_votes = 0
+
 # # Assign a variable for the file to load and the path.
 file_to_load = os.path.join("Resources", "election_results.csv")
 
@@ -22,7 +27,13 @@ with open(file_to_load) as election_data:
 
 #Read and print the header row
     headers = next(file_reader)
-    print(headers)
+
+    for row in file_reader:
+
+        total_votes += 1
+
+# Print the  total votes
+print(total_votes)
      # Print the file object.
      #df = election_data.read()
      #print(df)
